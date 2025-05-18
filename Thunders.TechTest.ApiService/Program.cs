@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 builder.Services.AddControllers();
+builder.Services.AddScoped<Thunders.TechTest.ApiService.Services.IReportService, Thunders.TechTest.ApiService.Services.ReportService>(); // Added ReportService registration
 
 var features = Features.BindFromConfiguration(builder.Configuration);
 
@@ -15,12 +16,13 @@ builder.Services.AddProblemDetails();
 
 if (features.UseMessageBroker)
 {
-    builder.Services.AddBus(builder.Configuration, new SubscriptionBuilder());
+    builder.Services.AddBus(builder.Configuration, new Thunders.TechTest.OutOfBox.Queues.SubscriptionBuilder().Add<Thunders.TechTest.ApiService.Messages.TollUsageDataMessage>());
 }
 
 if (features.UseEntityFramework)
 {
-    builder.Services.AddSqlServerDbContext<DbContext>(builder.Configuration);
+    //builder.Services.AddSqlServerDbContext<DbContext>(builder.Configuration); // Commented out original
+    builder.Services.AddSqlServerDbContext<Thunders.TechTest.ApiService.Data.AppDbContext>(builder.Configuration); // Added new DbContext
 }
 
 
