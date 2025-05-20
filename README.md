@@ -60,6 +60,25 @@ A API expõe os seguintes principais endpoints (veja exemplos na collection do P
   - `GET /api/Report/status/top-earning-toll-plazas/{reportId}`
   - `GET /api/Report/status/vehicle-count-by-toll-plaza/{reportId}`
 
+### 4. Consulta de Resultados dos Relatórios
+- **Exemplo:**
+  - `GET /api/Report/result/hourly-city-revenue/{reportId}`
+  - `GET /api/Report/result/top-earning-toll-plazas/{reportId}`
+  - `GET /api/Report/result/vehicle-count-by-toll-plaza/{reportId}`
+
+Esses endpoints retornam o resultado final do relatório solicitado, caso o processamento já tenha sido concluído.
+
+- **Exemplo de resposta:**
+  ```json
+  {
+    "reportId": "123e4567-e89b-12d3-a456-426614174000",
+    "status": "Completed",
+    "data": {
+      // ... dados específicos do relatório ...
+    }
+  }
+  ```
+
 ## Testando com o Postman
 1. Importe o arquivo `collection for postman/Thunders.postman_collection.json` no Postman.
 2. Utilize os exemplos prontos para testar os endpoints da API.
