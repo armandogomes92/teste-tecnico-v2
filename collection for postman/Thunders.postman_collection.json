@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "04870d08-f248-4ff8-aaee-f29fb2714270",
+		"name": "Thunders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38539765"
+	},
+	"item": [
+		{
+			"name": "Ingestão de dados de pedágio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"timestamp\":\"2024-06-01T12:00:00Z\",\"tollPlazaId\":1,\"city\":0,\"state\":0,\"amountPaid\":10.5,\"vehicleType\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7405/api/TollUsage/ingest",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"TollUsage",
+						"ingest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gerar relatório de valor total por hora por cidade",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/generate/hourly-city-revenue?forDate=2024-06-01",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"generate",
+						"hourly-city-revenue"
+					],
+					"query": [
+						{
+							"key": "forDate",
+							"value": "2024-06-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gerar relatório das praças que mais faturaram por mês",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/generate/top-earning-toll-plazas?year=2024&month=6&quantityOfPlazas=5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"generate",
+						"top-earning-toll-plazas"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2024"
+						},
+						{
+							"key": "month",
+							"value": "6"
+						},
+						{
+							"key": "quantityOfPlazas",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gerar relatório de contagem de tipos de veículos por praça",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/generate/vehicle-count-by-toll-plaza?tollPlazaId=1&reportDate=2024-06-01",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"generate",
+						"vehicle-count-by-toll-plaza"
+					],
+					"query": [
+						{
+							"key": "tollPlazaId",
+							"value": "1"
+						},
+						{
+							"key": "reportDate",
+							"value": "2024-06-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar status do relatório de valor total por hora por cidade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/status/hourly-city-revenue/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"status",
+						"hourly-city-revenue",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar status do relatório das praças que mais faturaram",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/status/top-earning-toll-plazas/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"status",
+						"top-earning-toll-plazas",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar status do relatório de contagem de veículos por praça",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/status/vehicle-count-by-toll-plaza/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"status",
+						"vehicle-count-by-toll-plaza",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar resultado do relatório de valor total por hora por cidade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/result/hourly-city-revenue/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"result",
+						"hourly-city-revenue",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar resultado do relatório das praças que mais faturaram",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/result/top-earning-toll-plazas/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"result",
+						"top-earning-toll-plazas",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar resultado do relatório de contagem de veículos por praça",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7405/api/Report/result/vehicle-count-by-toll-plaza/{reportId}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7405",
+					"path": [
+						"api",
+						"Report",
+						"result",
+						"vehicle-count-by-toll-plaza",
+						"{reportId}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

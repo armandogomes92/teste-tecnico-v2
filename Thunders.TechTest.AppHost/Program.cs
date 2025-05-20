@@ -18,6 +18,8 @@ var apiService = builder.AddProject<Projects.Thunders_TechTest_ApiService>("apis
     .WithReference(rabbitMq)
     .WaitFor(rabbitMq)
     .WithReference(database)
-    .WaitFor(database);
+    .WaitFor(database)
+    .WithReference(cache)
+    .WaitFor(cache);
 
 builder.Build().Run();

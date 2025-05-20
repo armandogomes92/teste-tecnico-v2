@@ -4,6 +4,7 @@
     {
         public required bool UseMessageBroker { get; set; }
         public required bool UseEntityFramework { get; set; }
+        public required bool UseRedis { get; set; }
 
         public static Features BindFromConfiguration(IConfiguration section)
         {
